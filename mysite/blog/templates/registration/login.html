@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+
+<div class="jumbotron">
+  <h2>Please Login</h2>
+  <marquee><h3>Must be a Super User, Please check with the site admin</h3></marquee>
+
+  {% if form.errors %}
+  <p>Your user name and password doesnt match</p>
+  {% endif %}
+
+  <form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class = 'btn btn-primary' type="submit" name="" value="Login">
+    <input type="hidden" name="next" value="{{next}}">
+    <!-- login in urls.py project -->
+
+  </form>
+
+</div>
+{% endblock %}
